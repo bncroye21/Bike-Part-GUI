@@ -1,0 +1,46 @@
+public class BikePart {
+    private String partName;
+    private int partNumber
+    private double listPrice;
+    private double salesPrice;
+    private boolean onSale;
+    private int quantity;
+    
+     public BikePart(String partName, int partNumber, double listPrice, double salesPrice, boolean onSale, int quantity) {
+        this.partName = partName;
+        this.partNumber = partNumber;
+        this.listPrice = listPrice;
+        this.salesPrice = salesPrice;
+        this.onSale = onSale;
+        this.quantity = quantity;
+    }
+    
+    public double getListPrice(){
+        return listPrice;
+    }
+    
+    public double getSalesPrice(){
+        return salesPrice;
+    }
+    
+    public int getPartNumber(){
+        return partNumber;
+    }
+    
+    public String getPartName(){
+        return partName;
+    }
+    
+    public boolean getOnSale(){
+        return onSale;
+    }
+    
+    public String toString(){
+        String list = partName + "," + partNumber + "," + listPrice + "," + salesPrice + "," + onSale + "," + quantity;
+        return list;
+    }
+  }
+
+
+
+
