@@ -14,9 +14,7 @@ public class SalesAssociate extends LoginAccount {
           this.wareHouseName = wareHouseName;
           this.salesInvoice = new ArrayList<>();
     }
-     
-     public SalesVanWareHouse getWareHouse() { return (SalesVanWareHouse) wh; }
-     
+          
      public void addBikePart(BikePart bpa) { wh.addBikePart(bpa); }
      
      public void addSalesInvoice(SalesInvoice si) { salesInvoice.add(si); }
@@ -29,9 +27,6 @@ public class SalesAssociate extends LoginAccount {
                  }
             else {
                 return returnList;
-    }
-    
-    public void loadSalesVanWareHouse(String fromWh, String fileName) {
-        //classthatstoreswarehouse.moveInventory(fromWhName, wareHouseName, fileName);
+        }
     }
 }
