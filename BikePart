@@ -1,46 +1,88 @@
+/**
+ * @author dennisjr
+ */
 public class BikePart {
     private String partName;
-    private int partNumber
+    private int partNumber;
     private double listPrice;
     private double salesPrice;
     private boolean onSale;
     private int quantity;
     
-     public BikePart(String partName, int partNumber, double listPrice, double salesPrice, boolean onSale, int quantity) {
+    public BikePart(String partName, int partNumber, double listPrice, double salesPrice, boolean onSale, int quantity) {
         this.partName = partName;
         this.partNumber = partNumber;
         this.listPrice = listPrice;
         this.salesPrice = salesPrice;
         this.onSale = onSale;
-        this.quantity = quantity;
     }
     
-    public double getListPrice(){
-        return listPrice;
+    public String getPartName() {
+        return partName;
+    }
+
+    public void setPartName(String partName) {
+        this.partName = partName;
     }
     
-    public double getSalesPrice(){
-        return salesPrice;
-    }
-    
-    public int getPartNumber(){
+    public int getPartNumber() {
         return partNumber;
     }
     
-    public String getPartName(){
-        return partName;
+    public void setPartNumber(int partNumber) {
+        this.partNumber = partNumber;
     }
-    
-    public boolean getOnSale(){
+
+    public double getPrice() {
+        return listPrice;
+    }
+
+    public void setPrice(double listPrice) {
+        this.listPrice = listPrice;
+    }
+
+    public double getSalesPrice() {
+        return salesPrice;
+    }
+
+    public void setSalesPrice(double salesPrice) {
+        this.salesPrice = salesPrice;
+    }
+
+    public boolean isOnSale() {
         return onSale;
     }
-    
-    public String toString(){
-        String list = partName + "," + partNumber + "," + listPrice + "," + salesPrice + "," + onSale + "," + quantity;
-        return list;
+
+    public void setOnSale(boolean onSale) {
+        this.onSale = onSale;
     }
-  }
+    
+    public void setQuantity(int quantity) {
+    	this.quantity = quantity; 
+    }
+    
+    public int getQuantity() {
+    	return quantity;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BikePart bikePart = (BikePart) o;
+        if (partNumber != bikePart.partNumber) return false;
+        return partName != null ? partName.equals(bikePart.partName) : bikePart.partName == null;
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "BikePart{" +
+                "name='" + partName + '\'' +
+                ", number=" + partNumber +
+                ", price=" + listPrice +
+                ", salesPrice=" + salesPrice +
+                ", onSale=" + onSale +
+                ", quantity=" + quantity +
+                '}';
+    }
+}
