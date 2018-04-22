@@ -2,7 +2,7 @@
  * @author dennisjr
  */
 
-public class Inventory {
+public class Inventory { //Similar to Lab 7 and Project1 
 	private BikePart bp;
 	private int count;
 	
