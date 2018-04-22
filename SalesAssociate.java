@@ -1,32 +1,60 @@
+/**
+ * @author dennisjr
+ * @return creates a Sales Associate
+ */
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class SalesAssociate extends LoginAccount {
-    private String wareHouseName;
-    private WareHouse wh;
-    //class that stores warehouse
-    private List<SalesInvoice> salesInvoice;
-    
-    public SalesAssociate(String firstName, String lastName, String emailAddress, 
-    String userName, String passWord, String wareHouseName) {
-         super(new Person(firstName, lastName, emailAddress), userName, passWord);
-          this.wareHouseName = wareHouseName;
-          this.salesInvoice = new ArrayList<>();
+	private String wareHouseName; //similar to Lab 7
+	private WareHouse wh;
+	private List<SalesInvoice> salesInvoice;
+	
+	/**
+	 * 
+	 * @param person
+	 * @param userName
+	 * @param password
+	 * @param wareHouseName
+	 * @param wh
+	 */
+	
+	public SalesAssociate(User person, String userName, String password, String wareHouseName, WareHouse wh) {
+		super(person, userName, password);
+		this.wareHouseName = wareHouseName;
+		this.wh = wh;
+		}
+	
+	/**
+	 * @param si
+	 * @return add a sales invoice
+	 */
+	
+	public void addSalesInvoice(SalesInvoice si) { salesInvoice.add(si); }
+	
+	/**
+	 * @param dateBegin
+	 * @param dateEnd
+	 * @return
+	 */
+	
+	public List<SalesInvoice> getSales(Date dateBegin, Date dateEnd) {
+        List<SalesInvoice> retList = new ArrayList<>();
+        for (SalesInvoice si : salesInvoice) {
+            if (dateBegin == null) {
+                retList.add(si);
+            }
+          }
+        return retList;
     }
-          
-     public void addBikePart(BikePart bpa) { wh.addBikePart(bpa); }
-     
-     public void addSalesInvoice(SalesInvoice si) { salesInvoice.add(si); }
-     
-     public List<SalesInvoice> getSales(Date dateBegin, Date dateEnd) {
-         List<SalesInvoice> returnList = new ArrayList<>();
-            for (SalesInvoice s : salesInvoice) {
-                 if (dateBegin == null) {
-                     returnList.add(s);
-                 }
-            else {
-                return returnList;
-        }
-    }
-}
+
+	
+	public String getWareHouseName() {
+		return wareHouseName;
+		}
+		
+	public WareHouse getWareHouse() { return wh; }
+	}
+
+
