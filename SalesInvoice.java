@@ -1,39 +1,68 @@
+/**
+ * @author dennisjr
+ * @param Sales Invoice
+ * @return a sales invoice  
+ */
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class SalesInvoice {
-    Date dateSold;
-    String customer;
-    List<warehouseInventory> InventoryParts;
-    String receivedBy;
-    double totalCost;
-
+	Date dateSold; //
+    String customer; //customer
+    List<Inventory> inventoryCount; //bpa and count
+    String receiver; //who recieves the invoice
+    double totalCost; //total cost of sales invoice
+    
+    /**
+     * 
+     * @param dateSold
+     * @param customer
+     * @return Sales Invoice characters
+     */
+    
     public SalesInvoice(Date dateSold, String customer) {
-        if (dateSold == null)
+    	if (dateSold == null)
             this.dateSold = new Date();
         else
             this.dateSold = dateSold;
-        this.customer = customer;
-        this.InventoryParts = new ArrayList<>();
-        this.totalCostOfInvoice = 0;
+    	this.customer = customer;
+        this.inventoryCount = new ArrayList<>();
+        this.totalCost = 0;
     }
-
-    public void addInvoice(warehouseInventory wi) {
-        InventoryParts.add(wi);
-        totalCost += Double.parseDouble(wi.getBikePart().getSalePrice());
+    /**
+     *  @param ic
+     *  @return adds a Sales Invoice
+     */
+    
+    public void addSalesInvoice(Inventory ic) { //add sales invoice
+    	inventoryCount.add(ic);
+        totalCost += Double.parseDouble(ic.getBikePart().getSalesPrice());
     }
+    
+    /**
+     * @param name
+     * @return the person who recieved the sale's invoice
+     */
+    public void addReceivedBy(String name) { receiver = name; } 
 
-    public void addReceivedBy(String name) { receivedBy = name; }
-
-    public Date getDateOfSale() { return dateSold; }
+    /**
+     * @return the date sold
+     */
+    public Date getDateSold() { return dateSold; }
+    
+    /**
+     * @param prints to string
+     */
 
     public String toString() {
-        String invoiceOutput = "Invoice: " + customer + " Date: " + dateSold + "\n";
-        for (warehouseInventory wi : InventoryParts)
-            invoiceOutput += wi.toString() + "\n";
-        invoiceOutput += totalCost + "\n";
+        String sa = "Invoice: " + customer + " Date: " + dateSold + "\n";
+        for (Inventory ic : inventoryCount)
+            sa += ic.toString() + "\n";
+        sa += totalCost + "\n";
         return sa;
     }
 }
+
 
