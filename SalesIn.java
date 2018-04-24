@@ -17,14 +17,14 @@ public class SalesIn implements Serializable{
     Date sellDate;
 
     static DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd 'at' hh:mm:ss a zzz");
-    public SalesInvoice(String cStore, String cReceived, ArrayList<BikePart> partsSold, SalesAsso emplSold) {
+    public SalesIn(String cStore, String cReceived, ArrayList<BikePart> partsSold, SalesAsso emplSold) {
         this.cStore = cStore;
         this.cReceived = cReceived;
         this.partsSold = partsSold;
         this.emplSold = emplSold;
         this.sellDate = new Date();
     }
-    public SalesInvoice(String cStore, String cReceived, SalesAsso emplSold) {
+    public SalesIn(String cStore, String cReceived, SalesAsso emplSold) {
         this.cStore = cStore;
         this.cReceived = cReceived;
         this.partsSold = new ArrayList<BikePart>();
@@ -32,7 +32,7 @@ public class SalesIn implements Serializable{
         this.sellDate = new Date();
     }
 
-    public SalesInvoice(String cStore, String cReceived, ArrayList<BikePart> partsSold, SalesAsso emplSold, long date) {
+    public SalesIn(String cStore, String cReceived, ArrayList<BikePart> partsSold, SalesAsso emplSold, long date) {
         this.cStore = cStore;
         this.cReceived = cReceived;
         this.partsSold = partsSold;
@@ -40,7 +40,7 @@ public class SalesIn implements Serializable{
         this.sellDate = new Date(date);
     }
 
-    public SalesInvoice() {}
+    public SalesIn() {}
     public String getStore() {
         return cStore;
     }
@@ -69,8 +69,18 @@ public class SalesIn implements Serializable{
         output += ("Received by: " + this.cReceived);
         return output;
     }
+    /**
+     * This method returns a condensed version of the toString() method.
+     * This will not be as human-readable as toString(), but is best for most efficient data storage.
+     * @return An ArrayList with index 0 containing the information about the invoice itself, and the remaining indices containing information about BikeParts.
+     */
 
     public ArrayList<String> toStringCondensed() {
+
+        /**cStore,customerEmployee,SaleDate
+         * partName,partNum,partListPrice,partSalesPrice,partOnSale,partQuan
+        */
+
         ArrayList<String> output = new ArrayList<String>();
         output.add(this.cStore + "," + this.cReceived + "," + this.sellDate.getTime());
         for(BikePart part : this.partsSold) {
