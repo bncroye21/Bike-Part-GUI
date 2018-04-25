@@ -1,40 +1,25 @@
+package Project3Classes;
 
-public class Account implements Comparable<Account>{
-	private String firstname;
-	private String lastname;
-	private String email;
+public class Account extends Person implements Comparable<Account>{
 	private String phonenumber;
 	private String username;
 	private String password;
 	private int accounttype;
+	private Person p;
 	
-	public Account(String un, String pw, String em, String fn, String ln, String pn, int at)
+	public Account()
+	{
+		phonenumber = "";
+		username = "";
+		password = "";
+	}
+	
+	public Account(String un, String pw, Person ps, String pn)
 	{
 		username = un;
 		password = pw;
-		email = em;
-		firstname = fn;
-		lastname = ln;
+		p = ps;
 		phonenumber = pn;
-		accounttype = at;
-	}
-	public String getFirstname() {
-		return firstname;
-	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getLastname() {
-		return lastname;
-	}
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
 	}
 	public String getPhonenumber() {
 		return phonenumber;
@@ -62,10 +47,13 @@ public class Account implements Comparable<Account>{
 	}
 	public String toString()
 	{
-		return username+"/t"+password+"/t"+email+"/t"+firstname+"/t"+lastname+"/t"+phonenumber+"/t"+accounttype+"/t";
+		return username+"/t"+password+"/t"+phonenumber+"/t"+accounttype+"/t";
 	}
 	public int compareTo(Account a) {
-		return this.getLastname().toLowerCase().compareTo(a.getLastname().toLowerCase());
+		return p.getLastN().toLowerCase().compareTo(a.getLastN().toLowerCase());
+	}
+	public void setPerson(Person p){
+		this.p = p;
 	}
 
 }

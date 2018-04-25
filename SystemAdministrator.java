@@ -157,7 +157,7 @@ public class SystemAdministrator extends Account
 	    			}
 	    			if(validUsername&&validName&&validEmail)
 	    			{
-	    				accountsType.add(new SalesAssociate(userName, passWord, p, pn, sv));
+	    				accountsType.add(new SalesAssociate2(userName, passWord, p, pn, sv));
 	    				ac.add((Account) accountsType.get(accountsType.size()-1));
 	    			}
 	    		}
@@ -165,5 +165,18 @@ public class SystemAdministrator extends Account
 	    		{
 	    			System.out.println("Error");
 	    		}
+	    }
+	    
+	    public Boolean changePassword(ArrayList<Account> ac, String usern, String pssw)
+	    {
+	    		for(Account x : ac)
+	    		{
+	    			if(x.getUsername().equals(usern))
+	    			{
+	    				x.setPassword(pssw);
+	    				return true;
+	    			}
+	    		}
+	    		return false;
 	    }
 }

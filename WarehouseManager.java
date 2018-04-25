@@ -1,11 +1,18 @@
+package Project3Classes;
 import java.util.ArrayList;
 
 public class WarehouseManager extends Account{
-
-	public WarehouseManager(String un, String pw, String em, String fn, String ln, String pn, int at)
+	
+	public WarehouseManager()
 	{
-		super(un, pw, em, fn, ln, pn, at);
+		super();
+		setAccounttype(2);
 	}
+
+	public WarehouseManager(String userName, String passWord, Person p, String pn) {
+        super(userName, passWord, p, pn);
+        this.setAccounttype(2);
+    }
 
 	public String displayPartName(ArrayList<Warehouse> wh, Warehouse w, String displ){
 		String output = "";
